@@ -1,6 +1,6 @@
 from bookshelf.models import Book
 
-book = Book.objects.create(title="Django Basics", author="George Orwell", publication_year=2023)
+book = Book.objects.create(title="1984", author="George Orwell", publication_year=)
 
 print(book)
 Book object (2)
