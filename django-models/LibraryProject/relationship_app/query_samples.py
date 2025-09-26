@@ -16,5 +16,5 @@ for book in book_in_library:
     print(book.title)
 
 # Librarian for a library
-librarian = library.librarian
-librarian_in_library = print(librarian.name)
+librarian = Librarian.objects.get(library=library)
+print(librarian.name)
