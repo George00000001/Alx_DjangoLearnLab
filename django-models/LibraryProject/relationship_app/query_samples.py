@@ -1,10 +1,11 @@
 from relationship_app.models import Author, Book, Library, Librarian
 
-author = Author.objects.get(name="author_name")
+author_name = "Author Name"
+author = Author.objects.get(name=author_name)
 library_name = "Library Name"
 
 # Books by author
-books_by_author = Book.objects.filter(author=author)
+books_by_author = Book.objects.filter(author=author_name)
 for book in books_by_author:
     print(book.title)
 
