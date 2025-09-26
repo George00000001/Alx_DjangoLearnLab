@@ -1,6 +1,6 @@
 from relationship_app.models import Author, Book, Library, Librarian
 
-author = Author.objects.get(name="Author Name")
+author = Author.objects.get(name="author_name")
 library_name = "Library Name"
 
 # Books by author
