@@ -4,7 +4,7 @@ from django.views.generic.detail import DetailView
 from .models import Library
 
 # Create your views here.
-def book_list(request):
+def list_books(request):
     books = Book.objects.all()
     book_info = [f"{book.title} by {book.author.name}" for book in books]
     context = {'book_list' : books}
