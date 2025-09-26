@@ -5,7 +5,7 @@ author = Author.objects.get(name=author_name)
 library_name = "Library Name"
 
 # Books by author
-books_by_author = Book.objects.filter(author=author_name)
+books_by_author = Book.objects.filter(author=author)
 for book in books_by_author:
     print(book.title)
 
