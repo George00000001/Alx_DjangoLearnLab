@@ -2,6 +2,10 @@ from django.shortcuts import render
 from .models import Book
 from django.views.generic.detail import DetailView
 from .models import Library
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib import messages
 
 # Create your views here.
 def list_books(request):
@@ -22,11 +26,6 @@ class LibraryDetailView(DetailView):
         context['books'] = self.object.books.all()
         return context 
     
-
-from django.shortcuts import render, redirect
-from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib import messages
 
 # User Registration
 def register_view(request):
