@@ -124,3 +124,39 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = "bookshelf.CustomUser"
+
+# 🚨 Disable debug in production
+DEBUG = False  # Change to False in production
+
+# 🚨 Allowed hosts for production
+ALLOWED_HOSTS = ["yourdomain.com", "127.0.0.1", "localhost"]
+
+# 🚨 Browser security headers
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS = "DENY"
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# 🚨 Cookies should be HTTPS-only
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
+# 🚨 Strong password validators (should already be there but confirm)
+AUTH_PASSWORD_VALIDATORS = [
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
+]
+
+# 🚨 Optional: Content Security Policy if using django-csp
+# Install: pip install django-csp
+INSTALLED_APPS += ["csp"]
+
+MIDDLEWARE += [
+    "csp.middleware.CSPMiddleware",
+]
+
+CSP_DEFAULT_SRC = ("'self'",)
+CSP_SCRIPT_SRC = ("'self'", "cdn.jsdelivr.net")  # adjust to your needs
+CSP_STYLE_SRC = ("'self'", "fonts.googleapis.com")
+CSP_FONT_SRC = ("'self'", "fonts.gstatic.com")
