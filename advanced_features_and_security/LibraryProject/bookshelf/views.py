@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import ExampleForm
 
 # Create your views here.
 from django.shortcuts import render, get_object_or_404
@@ -25,3 +26,14 @@ def delete_book(request, pk):
     book = get_object_or_404(Book, pk=pk)
     book.delete()
     return HttpResponse("Book deleted.")
+
+
+def form_example_view(request):
+    if request.method == "POST":
+        form = ExampleForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("book_list")  # replace with your actual URL name
+    else:
+        form = ExampleForm()
+    return render(request, "bookshelf/form_example.html", {"form": form})
