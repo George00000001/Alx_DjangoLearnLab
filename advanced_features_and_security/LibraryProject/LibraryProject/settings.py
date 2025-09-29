@@ -160,3 +160,24 @@ CSP_DEFAULT_SRC = ("'self'",)
 CSP_SCRIPT_SRC = ("'self'", "cdn.jsdelivr.net")  # adjust to your needs
 CSP_STYLE_SRC = ("'self'", "fonts.googleapis.com")
 CSP_FONT_SRC = ("'self'", "fonts.gstatic.com")
+
+# Redirect all HTTP requests to HTTPS
+SECURE_SSL_REDIRECT = True  
+
+# HTTP Strict Transport Security (HSTS) – force browsers to use HTTPS
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+# Cookies should only be sent over HTTPS
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+# Protect against clickjacking
+X_FRAME_OPTIONS = "DENY"
+
+# Prevent browsers from guessing content types
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# Enable basic XSS protection in browsers
+SECURE_BROWSER_XSS_FILTER = True
