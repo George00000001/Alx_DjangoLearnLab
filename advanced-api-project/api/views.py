@@ -6,6 +6,7 @@ from .serializers import BookSerializer, AuthorSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 from rest_framework.exceptions import PermissionDenied
 from django.contrib.auth.models import User
+from django_filters import rest_framework
 
 
 # Create your views here.
